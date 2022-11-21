@@ -1,8 +1,9 @@
-// import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:polines_news/article.dart';
 import 'package:polines_news/article_web.dart';
 import 'package:polines_news/detail_page.dart';
+import 'package:polines_news/styles.dart';
+import 'package:polines_news/list_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,6 +19,19 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'News App',
       theme: ThemeData(
+        colorScheme: Theme.of(context).colorScheme.copyWith(
+            primary: primaryColor,
+            secondary: secondaryColor,
+            onPrimary: Colors.black),
+        textTheme: myTextTheme,
+        appBarTheme: AppBarTheme(elevation: 0),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+                primary: secondaryColor,
+                onPrimary: Colors.white,
+                textStyle: const TextStyle(),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(0))))),
         visualDensity: VisualDensity.adaptivePlatformDensity,
         primarySwatch: Colors.teal,
       ),
@@ -32,46 +46,4 @@ class MyApp extends StatelessWidget {
       },
     );
   }
-}
-
-class NewsListPage extends StatelessWidget {
-  static const routeName = '/article_list';
-  const NewsListPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('News App'),
-      ),
-      body: FutureBuilder<String>(
-        future:
-            DefaultAssetBundle.of(context).loadString('assets/articles.json'),
-        builder: ((context, snapshot) {
-          final List<Article> articles = parseArticles(snapshot.data);
-          return ListView.builder(
-              itemCount: articles.length,
-              itemBuilder: (context, index) {
-                return _buildArticleItem(context, articles[index]);
-              });
-        }),
-      ),
-    );
-  }
-}
-
-Widget _buildArticleItem(BuildContext context, Article article) {
-  return ListTile(
-    contentPadding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-    leading: Image.network(
-      article.urlToImage,
-      width: 100,
-    ),
-    title: Text(article.title),
-    subtitle: Text(article.author),
-    onTap: (() {
-      Navigator.pushNamed(context, ArticleDetailPage.routeName,
-          arguments: article);
-    }),
-  );
 }
