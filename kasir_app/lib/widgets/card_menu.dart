@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:kasir_app/utils/colors.dart';
 import 'package:kasir_app/widgets/big_text.dart';
 
 class CardMenu extends StatelessWidget {
   final IconData iconData;
   final String menuTitle;
 
-  const CardMenu({super.key, required this.iconData, required this.menuTitle});
+  const CardMenu({
+    super.key,
+    required this.iconData,
+    required this.menuTitle,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,16 +32,17 @@ class CardMenu extends StatelessWidget {
             Icon(
               iconData,
               size: 60,
+              color: AppColor.iconColor1,
             ),
             SizedBox(
-              height: 10,
+              height: 15,
             ),
             Text(
               menuTitle,
               style: TextStyle(
                 fontFamily: 'Helvetica',
                 fontSize: 14,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w600,
               ),
               textAlign: TextAlign.center,
             )

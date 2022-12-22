@@ -23,16 +23,26 @@ class _MainPageState extends State<MainPage> {
     return SafeArea(
         child: Scaffold(
             appBar: AppBar(
-              
+              centerTitle: true,
               toolbarHeight: 70,
-              title: Text(
-                "Cashier Solinep",
-                style: TextStyle(color: AppColor.mainBlackColor),
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.money_rounded,
+                    color: AppColor.iconColor1,
+                    size: 20,
+                  ),
+                  Text(
+                    "Cashier Solinep",
+                    style: TextStyle(color: AppColor.mainBlackColor),
+                  ),
+                ],
               ),
-              backgroundColor: AppColor.backgroundColor,
+              backgroundColor: AppColor.backgroundColor1,
             ),
             body: Container(
-              color: AppColor.backgroundColor,
+              color: AppColor.backgroundColor1,
               child: Column(
                 children: [
                   Container(
@@ -164,7 +174,7 @@ class _MainPageState extends State<MainPage> {
               ],
               color: AppColor.mainBlackColor,
               activeColor: AppColor.iconColor1,
-              backgroundColor: AppColor.backgroundColor,
+              backgroundColor: AppColor.backgroundColor1,
               style: TabStyle.fixedCircle,
               height: 60,
               onTap: ((index) {}),

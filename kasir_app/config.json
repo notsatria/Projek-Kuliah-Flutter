@@ -1,0 +1,3 @@
+{
+  "modules": ["login", "register", "main_navigation", "dashboard", "favorite", "profile"]
+}

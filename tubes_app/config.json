@@ -1,0 +1,16 @@
+{
+    "modules": [
+        "login",
+        "register",
+        "main_navigation",
+        "dashboard",
+        "favorite",
+        "profile",
+        "edit_profile",
+        "product",
+        "product_form",
+        "order",
+        "pos",
+        "pos_checkout"
+    ]
+}
